@@ -1,0 +1,19 @@
+
+public class CustomerManager {
+	private Customer _customer;
+	ICreditManager _creditManager;
+	public CustomerManager(Customer customer){
+		_customer = customer;
+	}
+	
+	public void save() {
+		System.out.println("Müşteri kaydedildi ");
+	
+	public void delete() {
+		System.out.println("Müşteri silindi ");
+	}
+	
+	public void giveCredit() {
+		
+	}
+}

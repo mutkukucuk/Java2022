@@ -1,0 +1,15 @@
+
+public class CreditManager {
+	public CustomerManager() {
+		
+	}
+	
+	public void calculate() {
+		System.out.println("Hesaplandi");
+	}
+	
+	public void save() {
+		System.out.println("Kredi verildi");
+	}
+	
+}

@@ -1,0 +1,11 @@
+
+public class CreditManager {
+	public void hesapla() {
+		System.out.println("Hesaplandi");
+	}
+	
+	public void save() {
+		System.out.println("Kredi verildi");
+	}
+	
+}
