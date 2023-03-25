@@ -31,7 +31,6 @@ public class InMemoryCourseRepository implements CourseRepository{
 		
 	}
 
-
 	@Override
 	public void delete(int id) {
 		Course courseToRemove = getById(id);
@@ -57,6 +56,4 @@ public class InMemoryCourseRepository implements CourseRepository{
 		}
 		return null;
 	}
-
 }
-
