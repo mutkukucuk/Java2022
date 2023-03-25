@@ -12,7 +12,6 @@ import com.example.coursera.entities.concretes.Course;
 @Service
 public class CourseManager implements CourseService{
 	CourseRepository courseRepository;
-	//List<Course>coursesArray; 
 
 	public CourseManager() {
 	}
