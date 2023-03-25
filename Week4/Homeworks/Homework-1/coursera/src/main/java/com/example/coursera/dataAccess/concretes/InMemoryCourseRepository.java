@@ -18,14 +18,12 @@ public class InMemoryCourseRepository implements CourseRepository{
 		courses.add(new Course(2,"Java"));
 		courses.add(new Course(3,"Python"));
 	}
-
 	
 	@Override
 	public List<Course> getAll() {
 		
 		return courses;
 	}
-
 
 	@Override
 	public void add(Course course) {
@@ -42,16 +40,13 @@ public class InMemoryCourseRepository implements CourseRepository{
 		}
 	}
 
-
 	@Override
 	public void update(Course course) {
 		Course existingCourse = getById(course.getId());
 		if (existingCourse != null) {
 			existingCourse.setName(course.getName());
-		}
-		
+		}	
 	}
-
 
 	@Override
 	public Course getById(int id) {
@@ -62,19 +57,6 @@ public class InMemoryCourseRepository implements CourseRepository{
 		}
 		return null;
 	}
-
-
-
-
-
-
-
-	
-
-
-
-
-
 
 }
 
