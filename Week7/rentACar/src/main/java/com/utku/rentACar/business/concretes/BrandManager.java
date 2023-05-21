@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 import com.utku.rentACar.business.abstracts.BrandService;
 import com.utku.rentACar.business.dtos.requests.CreateBrandRequest;
 import com.utku.rentACar.business.dtos.requests.UpdateBrandRequest;
-import com.utku.rentACar.business.dtos.responses.GetAllBrandResponse;
+import com.utku.rentACar.business.dtos.responses.GetAllBrandsResponse;
 import com.utku.rentACar.business.dtos.responses.GetByIdBrandResponse;
+import com.utku.rentACar.business.rules.BrandBusinessRules;
 import com.utku.rentACar.core.utilities.mappers.ModelMapperService;
 import com.utku.rentACar.dataAccess.abstracts.BrandRepository;
 import com.utku.rentACar.entities.concretes.Brand;
@@ -21,12 +22,13 @@ import lombok.AllArgsConstructor;
 public class BrandManager implements BrandService{
 	private BrandRepository brandRepository;
 	private ModelMapperService modelMapperService;
+	private BrandBusinessRules brandBusinessRules;
 	
 	@Override
-	public List<GetAllBrandResponse> getAll() {
+	public List<GetAllBrandsResponse> getAll() {
 		List<Brand> brands = brandRepository.findAll();
-		List<GetAllBrandResponse> brandResponses = brands.stream().map(brand->this.modelMapperService.forResponse()
-				.map(brand, GetAllBrandResponse.class)).collect(Collectors.toList());
+		List<GetAllBrandsResponse> brandResponses = brands.stream().map(brand->this.modelMapperService.forResponse()
+				.map(brand, GetAllBrandsResponse.class)).collect(Collectors.toList());
 		return brandResponses;
 	}
 
@@ -39,6 +41,9 @@ public class BrandManager implements BrandService{
 
 	@Override
 	public void add(CreateBrandRequest createBrandRequest) {
+		
+		this.brandBusinessRules.checkIfBrandNameExists(createBrandRequest.getName());
+		
 		Brand brand = this.modelMapperService.forRequest().map(createBrandRequest, Brand.class);
 		brandRepository.save(brand);
 		

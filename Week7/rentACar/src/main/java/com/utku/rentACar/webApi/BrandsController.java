@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.utku.rentACar.business.abstracts.BrandService;
 import com.utku.rentACar.business.dtos.requests.CreateBrandRequest;
 import com.utku.rentACar.business.dtos.requests.UpdateBrandRequest;
-import com.utku.rentACar.business.dtos.responses.GetAllBrandResponse;
+import com.utku.rentACar.business.dtos.responses.GetAllBrandsResponse;
 import com.utku.rentACar.business.dtos.responses.GetByIdBrandResponse;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 
@@ -32,7 +33,7 @@ public class BrandsController {
 
 	
 	@GetMapping()
-	public List<GetAllBrandResponse> getAll(){
+	public List<GetAllBrandsResponse> getAll(){
 		return brandService.getAll();
 		
 	}
@@ -51,7 +52,7 @@ public class BrandsController {
 	
 	
 	@PutMapping
-	public void update(@RequestBody UpdateBrandRequest updateBrandRequest) {
+	public void update(@RequestBody @Valid UpdateBrandRequest updateBrandRequest) {
 		this.brandService.update(updateBrandRequest);
 	}
 	

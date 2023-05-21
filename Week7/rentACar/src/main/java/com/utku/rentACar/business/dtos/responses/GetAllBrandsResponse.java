@@ -5,10 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class GetAllBrandResponse {
+@AllArgsConstructor
+public class GetAllBrandsResponse {
 	private int id;
 	private String name;
-	
 }
